@@ -1,10 +1,19 @@
 var express = require('express');
 
 var app = express.createServer();
-app.use(express.static(__dirname + '/public_html'))
+app.use(express.static(__dirname + '/public_html'));
 app.use(express.bodyParser());
 
 var port = process.env.PORT || 5000;
+
+app.get('/polling.json',function(req,res){
+  var result = {};
+  result["message"] = "COMMIT"; 
+  result["theme"] = "failed";
+  result["status"] = "success";
+
+  res.send(JSON.stringify(result));
+});
 
 app.post('/hook.json',function(req,res){
   console.log('request =' + JSON.stringify(req.body.payload));
