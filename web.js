@@ -29,10 +29,6 @@ app.post('/hook.json',function(req,res){
   }
   console.log(message);
   res.send(message);
-
 });
-
-
-
 
 app.listen(port);
