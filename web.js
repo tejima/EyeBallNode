@@ -30,7 +30,7 @@ app.post('/hook.json',function(req,res){
 
   var result = {};
   result["message"] = message; 
-  result["theme"] = "commited";
+  result["theme"] = "committed";
   result["status"] = "success";
   stack.push(result);
 
