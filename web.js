@@ -1,3 +1,4 @@
+var stack = new Array();
 var express = require('express');
 
 var app = express.createServer();
@@ -7,12 +8,13 @@ app.use(express.bodyParser());
 var port = process.env.PORT || 5000;
 
 app.get('/polling.json',function(req,res){
-  var result = {};
-  result["message"] = "COMMIT"; 
-  result["theme"] = "failed";
-  result["status"] = "success";
+  var line = stack.shift();
+  if(line){
+    res.send(JSON.stringify(line));    
+  }else{
+    res.send(JSON.stringify({"status": "none"}));
+  }
 
-  res.send(JSON.stringify(result));
 });
 
 app.post('/hook.json',function(req,res){
@@ -25,6 +27,13 @@ app.post('/hook.json',function(req,res){
   var message = commiter_name + "さんがコミットしました。" + project_name;
   console.log(message);
   res.send(message);
+
+  var result = {};
+  result["message"] = message; 
+  result["theme"] = "commited";
+  result["status"] = "success";
+  stack.push(result);
+
 });
 
 app.post('/hook_travis.json',function(req,res){
@@ -38,6 +47,12 @@ app.post('/hook_travis.json',function(req,res){
   var message = commiter_name + "さんが" + project_name + "のテストにトライし" + status_message + "しました";
   console.log(message);
   res.send(message);
+
+  var result = {};
+  result["message"] = message; 
+  result["theme"] = "succeed";
+  result["status"] = "success";
+  stack.push(result);
 });
 
 
