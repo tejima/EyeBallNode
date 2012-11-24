@@ -9,7 +9,10 @@ var showMessage = function(input) {
 	}
 
 	// 背景設定
-	$('#bgPhoto').css('background-image', 'url(img/' + theme.bg + ')');
+	if (showMessage.prevTheme !== theme) {
+		$('#bgPhoto').css('background-image', 'url(img/' + theme.bg + ')');
+		showMessage.prevTheme = theme;
+	}
 
 	// メッセージ装飾
 	$('#message').css('top', theme.messageY);
@@ -18,6 +21,7 @@ var showMessage = function(input) {
 	// メッセージ表示
 	$('#message').html(input.message);
 };
+showMessage.prevTheme = null;
 
 var themes = {
 	waiting : {
