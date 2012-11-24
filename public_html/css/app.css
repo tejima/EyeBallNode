@@ -1,0 +1,13 @@
+
+body#bgPhoto {
+	position: absolute;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+div#message {
+	position: absolute;
+	font-size: 1cm;
+	padding: 1cm;
+	text-shadow: 4px 4px 8px #888;
+}

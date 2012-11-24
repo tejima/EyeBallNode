@@ -1,0 +1,17 @@
+html,
+body {
+    height:100%;
+    font-size:12px;
+    width:100%;
+    font-family: "Helvetica Neue";
+}
+
+* {
+	margin: 0;
+	padding: 0;
+    overflow: hidden;
+}
+
+img {
+	vertical-align: text-bottom;
+}
