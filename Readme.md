@@ -22,7 +22,7 @@ GithubのコミットやTravisのテスト結果を、タブレットで派手�
 http://salty-plains-5925.herokuapp.com
 にある。デバイスIDのうち1,8,9は自由に利用可能。
 
-<img src="http://p.pne.jp/d/590/201211272347.png">
+<img src="http://p.pne.jp/d/700/201211272347.png">
 
 この図のように、フック用URLを入力する（deviceidは1,8,9のどれかを使う）
 
@@ -30,7 +30,8 @@ http://salty-plains-5925.herokuapp.com
 利用方法（Travis）
 ------------------
 
-<img src="http://p.pne.jp/d/590/201211272349.png">
+<img src="http://p.pne.jp/d/700/201211272349.png">
+
 .travis.ymlのWebHookのパートを記述する
 
 利用方法（手動登録）
