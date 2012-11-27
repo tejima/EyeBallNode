@@ -22,6 +22,12 @@ GithubのコミットやTravisのテスト結果を、タブレットで派手�
 http://salty-plains-5925.herokuapp.com
 にある。デバイスIDのうち1,8,9は自由に利用可能。
 
+http://salty-plains-5925.herokuapp.com/?deviceid=1
+http://salty-plains-5925.herokuapp.com/?deviceid=8
+http://salty-plains-5925.herokuapp.com/?deviceid=9
+
+ 
+
 <img src="http://p.pne.jp/d/700/201211272347.png">
 
 この図のように、フック用URLを入力する（deviceidは1,8,9のどれかを使う）
@@ -37,7 +43,10 @@ http://salty-plains-5925.herokuapp.com
 利用方法（手動登録）
 -------------------
 
+例えばこんなURLでキックすれば登録できる。今のところ認証などは一切ない。
+
 http://salty-plains-5925.herokuapp.com/hook_manual.json?deviceid=8&message=TEJIMAS_COMMIT&theme=committed&status=success
+
  * deviceid 端末ID デモでは1,8,9を利用者で共有する
  * message 端末に表示したいコミット時のメッセージを表示する
  * theme committed failed succeed のいずれかが使える
