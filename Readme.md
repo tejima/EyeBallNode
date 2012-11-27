@@ -15,26 +15,26 @@ GithubのコミットやTravisのテスト結果を、タブレットで派手�
 <img src="http://p.pne.jp/d/201211272340.png">
 
 
-利用方法
-----------
+利用方法（Github）
+-------------------
 
 このソフトウエアのテストサイトが、
 http://salty-plains-5925.herokuapp.com
-にある。
+にある。デバイスIDのうち1,8,9は自由に利用可能。
 
-でバイスIDのうち1,8,9は自由に使っていい。
-
-
-**Github**
 <img src="http://p.pne.jp/d/590/201211272347.png">
 
 この図のように、フック用URLを入力する（deviceidは1,8,9のどれかを使う）
 
-**Travis**
+
+利用方法（Travis）
+------------------
+
 <img src="http://p.pne.jp/d/590/201211272349.png">
 .travis.ymlのWebHookのパートを記述する
 
-**Manual**
+利用方法（手動登録）
+-------------------
 
 http://salty-plains-5925.herokuapp.com/hook_manual.json?deviceid=8&message=TEJIMAS_COMMIT&theme=committed&status=success
  * deviceid 端末ID デモでは1,8,9を利用者で共有する
