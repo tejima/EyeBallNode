@@ -23,7 +23,9 @@ http://salty-plains-5925.herokuapp.com
 にある。デバイスIDのうち1,8,9は自由に利用可能。
 
 http://salty-plains-5925.herokuapp.com/?deviceid=1
+ 
 http://salty-plains-5925.herokuapp.com/?deviceid=8
+ 
 http://salty-plains-5925.herokuapp.com/?deviceid=9
 
  
