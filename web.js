@@ -18,7 +18,7 @@ app.get('/polling.json',function(req,res){
   }
 
 });
- 
+
 app.get('/hook_manual.json',function(req,res){
   var deviceid = parseInt(req.query.deviceid) ? parseInt(req.query.deviceid) : 0;
   var message = req.query.message ? req.query.message : null;
@@ -30,7 +30,6 @@ app.get('/hook_manual.json',function(req,res){
     }else{
     　　res.send(JSON.stringify({"status":"PARAM_ERROR"}));
     }
-    res.send(JSON.stringify(result));
   }else{
     console.log(req.body);
     res.send(JSON.stringify({"status":"PRAM_ERROR"}));
