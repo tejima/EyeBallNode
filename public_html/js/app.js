@@ -73,7 +73,9 @@ var defaultInput = {
 	message : currentDatetime()
 };
 
-var serverUrl = '/polling.json';
+var vars = getUrlVars();
+var deviceid = vars['deviceid'] ? vars['deviceid'] : "0";
+var serverUrl = '/polling.json?deviceid=' + deviceid;
 
 var checkServer = function() {
 	$.getJSON(serverUrl, null, function(data, status) {
@@ -87,3 +89,16 @@ var checkServer = function() {
 
 // 10秒ポーリング、更新があればshowMessage
 setInterval("checkServer()", 10000);
+
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i <hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
