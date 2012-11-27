@@ -1,4 +1,5 @@
-var stack = new Array();
+var stack_array = new Array(new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array());
+
 var express = require('express');
 
 var app = express.createServer();
@@ -8,7 +9,8 @@ app.use(express.bodyParser());
 var port = process.env.PORT || 5000;
 
 app.get('/polling.json',function(req,res){
-  var line = stack.shift();
+  var deviceid = parseInt(req.query.deviceid) ? parseInt(req.query.deviceid) : 0;
+  var line = stackShift(deviceid);
   if(line){
     res.send(JSON.stringify(line));    
   }else{
@@ -35,6 +37,8 @@ app.get('/hook_manual.json',function(req,res){
 });
 
 app.post('/hook.json',function(req,res){
+  var deviceid = parseInt(req.body.deviceid) ? parseInt(req.body.deviceid) : 0;
+  
   console.log('request =' + JSON.stringify(req.body.payload));
   var json = JSON.parse(req.body.payload);
 
@@ -45,15 +49,16 @@ app.post('/hook.json',function(req,res){
   console.log(message);
   res.send(message);
 
-  var result = {};
-  result["message"] = message; 
-  result["theme"] = "committed";
-  result["status"] = "success";
-  stack.push(result);
-
+  if(stackPush(deviceid,message,"committed","success")){
+    res.send(JSON.stringify({"status":"SUCCESS"}));    
+  }else{
+    res.send(JSON.stringify({"status":"PRAM_ERROR"}));
+  }
 });
 
 app.post('/hook_travis.json',function(req,res){
+  var deviceid = parseInt(req.body.deviceid) ? parseInt(req.body.deviceid) : 0;
+  
   console.log('request =' + JSON.stringify(req.body.payload));
   var json = JSON.parse(req.body.payload);
 
@@ -64,14 +69,30 @@ app.post('/hook_travis.json',function(req,res){
   var message = commiter_name + "さんが" + project_name + "のテストにトライし" + status_message + "しました";
   console.log(message);
   res.send(message);
-
-  var result = {};
-  result["message"] = message; 
-  result["theme"] = "succeed";
-  result["status"] = "success";
-  stack.push(result);
+  if( stackPush(deviceid,message,"succeed","success")){
+      res.send(JSON.stringify({"status":"SUCCESS"}));    
+  }else{
+    res.send(JSON.stringify({"status":"PRAM_ERROR"}));
+  }
 });
 
-
-
 app.listen(port);
+
+function stackPush(index,message,theme,status){
+  if(index >= 10){
+    return null;
+  }
+  var result = {};
+  result["message"] = message; 
+  result["theme"] = theme;
+  result["status"] = status;
+  stack_array[index].push(result);
+  return result;
+}
+function stackShift(index){
+  try{
+    return stack_array[index].shift();
+  }catch(e){
+    return null;
+  }
+}
