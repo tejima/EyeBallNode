@@ -15,7 +15,7 @@ GithubのコミットやTravisのテスト結果を、タブレットで派手�
 <img src="http://p.pne.jp/d/201211272340.png">
 
 
-利用方法（Github）
+タブレット利用方法
 -------------------
 
 このソフトウエアのテストサイトが、
@@ -28,6 +28,14 @@ http://salty-plains-5925.herokuapp.com/?deviceid=8
  
 http://salty-plains-5925.herokuapp.com/?deviceid=9
 
+アクセスしてしばらく待って、以下の様なディスプレイが出てくれば準備完了。
+ソースコードマネジメントツール側からデータ通知をすれば、表示をコントロールできる。
+ 
+<img src="http://p.pne.jp/d/500/201211280004.png">
+
+ 
+データ通知方法（Github）
+-------------------
  
 
 <img src="http://p.pne.jp/d/700/201211272347.png">
@@ -35,14 +43,14 @@ http://salty-plains-5925.herokuapp.com/?deviceid=9
 この図のように、フック用URLを入力する（deviceidは1,8,9のどれかを使う）
 
 
-利用方法（Travis）
+データ通知方法（Travis）
 ------------------
 
 <img src="http://p.pne.jp/d/700/201211272349.png">
 
 .travis.ymlのWebHookのパートを記述する
 
-利用方法（手動登録）
+データ通知方法（手動登録）
 -------------------
 
 例えばこんなURLでキックすれば登録できる。今のところ認証などは一切ない。
