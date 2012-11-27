@@ -12,7 +12,7 @@ GithubのコミットやTravisのテスト結果を、タブレットで派手�
 
 全体イメージ
 ----------
-<img src="http://p.pne.jp/d/590/201211272340.png">
+<img src="http://p.pne.jp/d/201211272340.png">
 
 
 利用方法
